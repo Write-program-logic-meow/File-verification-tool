@@ -38,5 +38,11 @@ namespace File_check
             Setting_interface setting_interface = new Setting_interface();
             setting_interface.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Manual_file_check manual_file_check = new Manual_file_check();
+            manual_file_check.Show();
+        }
     }
 }

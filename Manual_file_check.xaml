@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="文件校验-手动" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Path x:Name="Path1" StrokeThickness="2" StrokeDashArray="4 2" Margin="50,37,550,233" Stretch="Fill" Stroke="#7F000000" AllowDrop="True" DragEnter="Path1_DragEnter">
+            <Path.Data>
+                <RectangleGeometry Rect="10 10 100 100"/>
+            </Path.Data>
+        </Path>
+        <TextBlock HorizontalAlignment="Left" Margin="78,108,0,0" TextWrapping="Wrap" Text="请将文件拖到这里" VerticalAlignment="Top" FontSize="18" Foreground="#7F000000"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,37,0,0" TextWrapping="Wrap" Text="文件路径：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,72,0,0" TextWrapping="Wrap" Text="文件大小：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,125,0,0" TextWrapping="Wrap" Text="MD5：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,156,0,0" TextWrapping="Wrap" Text="SHA1：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,187,0,0" TextWrapping="Wrap" Text="SHA256：" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock1" HorizontalAlignment="Left" Margin="347,37,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock2" HorizontalAlignment="Left" Margin="347,72,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock3" HorizontalAlignment="Left" Margin="327,125,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock4" HorizontalAlignment="Left" Margin="331,156,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock5" HorizontalAlignment="Left" Margin="345,187,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Margin="90,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <TextBox x:Name="TextBox2" HorizontalAlignment="Left" Margin="90,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <TextBlock HorizontalAlignment="Left" Margin="57,266,0,0" TextWrapping="Wrap" Text="MD5" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="53,314,0,0" TextWrapping="Wrap" Text="SHA1" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox3" HorizontalAlignment="Left" Margin="90,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,363,0,0" TextWrapping="Wrap" Text="SHA256" VerticalAlignment="Top"/>
+        <Button Content="校验" HorizontalAlignment="Left" Margin="590,261,0,0" VerticalAlignment="Top" Width="60" Height="20" Click="Button_Click"/>
+        <TextBlock x:Name="TextBlock6" HorizontalAlignment="Left" Margin="596,302,0,0" TextWrapping="Wrap" Text="等待校验" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock7" HorizontalAlignment="Left" Margin="596,334,0,0" TextWrapping="Wrap" Text="等待校验" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock8" HorizontalAlignment="Left" Margin="596,367,0,0" TextWrapping="Wrap" Text="等待校验" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
