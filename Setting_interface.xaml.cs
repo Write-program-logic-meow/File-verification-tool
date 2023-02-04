@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using System.IO;
+using System.Linq;
+using System.Windows.Media;
 
 namespace File_check
 {
@@ -11,54 +13,69 @@ namespace File_check
     /// </summary>
     public partial class Setting_interface : Window
     {
+        private const string AutoStartKey = "File_check";
+        private readonly RegistryKey _autoStartKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        private const string ConfigFilePath = "data\\config.dat";
+
         public Setting_interface()
         {
             InitializeComponent();
+            // 读取config.dat文件的第二行，判断CheckBox1的状态
+            if (File.Exists(ConfigFilePath))
+            {
+                string[] lines = File.ReadAllLines(ConfigFilePath);
+                if (lines.Length >= 2)
+                {
+                    string checkBoxLine = lines[1];
+                    if (checkBoxLine == "CheckBox1=1")
+                    {
+                        CheckBox1.IsChecked = true;
+                    }
+                    else if (checkBoxLine == "CheckBox1=0")
+                    {
+                        CheckBox1.IsChecked = false;
+                    }
+                }
+            }
+            CheckBox1.Checked += CheckBox1_Checked;
+            CheckBox1.Unchecked += CheckBox1_Unchecked;
         }
 
         private void CheckBox1_Checked(object sender, RoutedEventArgs e)
         {
-            // 获取程序的路径
-            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            // 勾选CheckBox1时，将程序设置为开机启动
+            _autoStartKey.SetValue(AutoStartKey, System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
-            // 创建键值
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.SetValue("File_check", path);
+            // 将CheckBox1=1写入config.dat文件的第二行
+            string[] lines;
+            if (File.Exists(ConfigFilePath))
+            {
+                lines = File.ReadAllLines(ConfigFilePath);
+            }
+            else
+            {
+                lines = new string[] { "", "" };
+            }
+
+            if (lines.Length < 2)
+            {
+                Array.Resize(ref lines, 2);
+            }
+
+            lines[1] = "CheckBox1=1";
+            File.WriteAllLines(ConfigFilePath, lines);
         }
 
+        
         private void CheckBox1_Unchecked(object sender, RoutedEventArgs e)
         {
-            // 删除键值
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.DeleteValue("File_check", false);
-        }
+            // 取消勾选CheckBox1时，取消程序的开机启动
+            _autoStartKey.DeleteValue(AutoStartKey, false);
 
-        private void CheckBox2_Checked(object sender, RoutedEventArgs e)
-        {
-            //定义文件路径
-            string filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/config.dat"));
-            //将day写入程序根目录下的data文件夹中的config.dat文件中的第一行
-            File.WriteAllText(filePath, "night");
-            //弹出窗口询问用户：是否重启程序来切换夜晚模式？
-            if (MessageBox.Show("是否重启程序来切换夜晚模式？", "提示", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                //重新启动程序
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            }
-        }
-
-        private void CheckBox2_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //定义文件路径
-            string filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/config.dat"));
-            //将day写入程序根目录下的data文件夹中的config.dat文件中的第一行
-            File.WriteAllText(filePath, "day");
-            //弹出窗口询问用户：是否重启程序来切换白天模式？
-            if (MessageBox.Show("是否重启程序来切换白天模式？", "提示", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                //重新启动程序
-                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            }
+            // 将CheckBox1=0写入config.dat文件的第二行
+            string[] lines = File.ReadAllLines(ConfigFilePath);
+            lines[1] = "CheckBox1=0";
+            File.WriteAllLines(ConfigFilePath, lines);
         }
     }
 }

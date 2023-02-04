@@ -8,8 +8,6 @@
         Title="设置" Height="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <CheckBox x:Name="CheckBox1" Content="是否开机启动" HorizontalAlignment="Center" Margin="0,75,0,0" VerticalAlignment="Top" Checked="CheckBox1_Checked" Unchecked="CheckBox1_Unchecked"/>
-        <CheckBox x:Name="CheckBox2" Content="夜间模式" HorizontalAlignment="Center" VerticalAlignment="Top" Checked="CheckBox2_Checked" Unchecked="CheckBox2_Unchecked" Margin="0,127,0,0"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,147,0,0" TextWrapping="Wrap" Text="『夜间模式功能还未实现』" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
