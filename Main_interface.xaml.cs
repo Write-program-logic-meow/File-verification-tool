@@ -44,5 +44,11 @@ namespace File_check
             Manual_file_check manual_file_check = new Manual_file_check();
             manual_file_check.Show();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            File_verification_copy newWindow = new File_verification_copy();
+            newWindow.Show();
+        }
     }
 }

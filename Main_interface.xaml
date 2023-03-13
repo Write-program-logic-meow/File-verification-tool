@@ -7,9 +7,50 @@
         mc:Ignorable="d"
         Title="文件效验" Height="400" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="文件效验-自动" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Click"/>
-        <Button Content="文件效验-手动" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="40" Margin="0,192,0,0" Click="Button_Click_2"/>
-        <Button Content="设置" HorizontalAlignment="Center" Margin="0,331,0,0" VerticalAlignment="Top" Width="60" Height="20" Click="Button_Click_1"/>
+        <Button Content="文件效验-自动" HorizontalAlignment="Left" Margin="60,75,0,0" VerticalAlignment="Top" Width="100" Height="40" Click="Button_Click" FontSize="14">
+            <Button.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Button.Foreground>
+        </Button>
+        <Button Content="文件效验-手动" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="40" Margin="60,140,0,0" Click="Button_Click_2" FontSize="14">
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.Background>
+        </Button>
+        <Button Content="设置" HorizontalAlignment="Left" Margin="295,75,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="Button_Click_1" FontSize="14">
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.Background>
+        </Button>
+        <Button Content="文件校验-复制" HorizontalAlignment="Left" Margin="60,205,0,0" VerticalAlignment="Top" Click="Button_Click_3" Height="40" Width="100" FontSize="14">
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

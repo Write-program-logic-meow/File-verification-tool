@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -21,31 +20,36 @@ namespace File_check
 
         private void Path1_DragEnter(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files != null && files.Length > 0)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                // 如果是快捷方式则弹出一个窗口，显示：请不要将快捷方式拖进来！
-                if (Path.GetExtension(files[0]) == ".lnk")
-                {
-                    MessageBox.Show("请不要将快捷方式拖进来！");
-                    return;
-                }
+                // 获取拖放的文件路径
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string filePath = files[0];
 
-                // 如果不是快捷方式，就把拖进来的文件的文件路径显示在TextBlock1上，把文件大小显示在TextBlock2上
-                TextBlock1.Text = files[0];
-                FileInfo fileInfo = new FileInfo(files[0]);
-                double sizeInMB = (double)fileInfo.Length / 1048576;
-                TextBlock2.Text = sizeInMB.ToString("0.00") + " MB";
+                // 解析文件信息
+                FileInfo fileInfo = new FileInfo(filePath);
+                string fileSize = (fileInfo.Length / 1024f / 1024f).ToString("F2") + " MB";
+                string fileMD5 = GetFileHash(filePath, MD5.Create());
+                string fileSHA1 = GetFileHash(filePath, SHA1.Create());
+                string fileSHA256 = GetFileHash(filePath, SHA256.Create());
+                string fileSHA512 = GetFileHash(filePath, SHA512.Create());
 
-                // 分析拖进来的文件的MD5、SHA1、SHA256的值
-                string md5 = GetMD5HashFromFile(files[0]);
-                string sha1 = GetSHA1HashFromFile(files[0]);
-                string sha256 = GetSHA256HashFromFile(files[0]);
+                // 更新UI
+                TextBlock1.Text = filePath;
+                TextBlock2.Text = fileSize;
+                TextBlock3.Text = fileMD5;
+                TextBlock4.Text = fileSHA1;
+                TextBlock5.Text = fileSHA256;
+                TextBlock9.Text = fileSHA512;
+            }
+        }
 
-                // 把分析到的MD5、SHA1、SHA256的值分别显示到TextBlock3、TextBlock4、TextBlock5
-                TextBlock3.Text = md5;
-                TextBlock4.Text = sha1;
-                TextBlock5.Text = sha256;
+        private string GetFileHash(string filePath, HashAlgorithm hashAlgorithm)
+        {
+            using (FileStream stream = File.OpenRead(filePath))
+            {
+                byte[] hashBytes = hashAlgorithm.ComputeHash(stream);
+                return BitConverter.ToString(hashBytes).Replace("-", "");
             }
         }
 
@@ -86,76 +90,18 @@ namespace File_check
                 TextBlock8.Text = "文件SHA256不相同";
                 TextBlock8.Foreground = System.Windows.Media.Brushes.Red;
             }
-        }
 
-        // 获取文件的MD5值
-        public static string GetMD5HashFromFile(string fileName)
-        {
-            try
+            // 比较TextBox4和TextBlock9的值，如果相同则把TextBlock10的文字变为文件SHA512相同并显示成绿色，如果不相同则把TextBlock10的文字变为文件SHA512不相同并显示成红色
+            if (TextBox4.Text == TextBlock9.Text)
             {
-                FileStream file = new FileStream(fileName, FileMode.Open);
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] retVal = md5.ComputeHash(file);
-                file.Close();
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < retVal.Length; i++)
-                {
-                    sb.Append(retVal[i].ToString("x2"));
-                }
-                return sb.ToString();
+                TextBlock10.Text = "文件SHA512相同";
+                TextBlock10.Foreground = System.Windows.Media.Brushes.Green;
             }
-            catch (Exception ex)
+            else
             {
-                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+                TextBlock10.Text = "文件SHA512不相同";
+                TextBlock10.Foreground = System.Windows.Media.Brushes.Red;
             }
         }
-
-        // 获取文件的SHA1值
-        public static string GetSHA1HashFromFile(string fileName)
-        {
-            try
-            {
-                FileStream file = new FileStream(fileName, FileMode.Open);
-                SHA1 sha1 = new SHA1CryptoServiceProvider();
-                byte[] retVal = sha1.ComputeHash(file);
-                file.Close();
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < retVal.Length; i++)
-                {
-                    sb.Append(retVal[i].ToString("x2"));
-                }
-                return sb.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("GetSHA1HashFromFile() fail,error:" + ex.Message);
-            }
-        }
-
-        // 获取文件的SHA256值
-        public static string GetSHA256HashFromFile(string fileName)
-        {
-            try
-            {
-                FileStream file = new FileStream(fileName, FileMode.Open);
-                SHA256 sha256 = new SHA256CryptoServiceProvider();
-                byte[] retVal = sha256.ComputeHash(file);
-                file.Close();
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < retVal.Length; i++)
-                {
-                    sb.Append(retVal[i].ToString("x2"));
-                }
-                return sb.ToString();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("GetSHA256HashFromFile() fail,error:" + ex.Message);
-            }
-        }
-
     }
 }

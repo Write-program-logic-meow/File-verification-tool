@@ -17,26 +17,26 @@
                 <RectangleGeometry Rect="10 10 100 100"/>
             </Path.Data>
         </Path>
-        <TextBlock HorizontalAlignment="Left" Margin="287,125,0,0" TextWrapping="Wrap" Text="MD5：" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="287,156,0,0" TextWrapping="Wrap" Text="SHA1：" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="287,187,0,0" TextWrapping="Wrap" Text="SHA256：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,103,0,0" TextWrapping="Wrap" Text="MD5：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,134,0,0" TextWrapping="Wrap" Text="SHA1：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,165,0,0" TextWrapping="Wrap" Text="SHA256：" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="287,37,0,0" TextWrapping="Wrap" Text="文件路径：" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="287,72,0,0" TextWrapping="Wrap" Text="文件大小：" VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock1" HorizontalAlignment="Left" Margin="347,37,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock2" HorizontalAlignment="Left" Margin="347,72,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock3" HorizontalAlignment="Left" Margin="327,125,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock4" HorizontalAlignment="Left" Margin="331,156,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock5" HorizontalAlignment="Left" Margin="345,187,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,469,0,0" TextWrapping="Wrap" Text="SHA256：" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="288,440,0,0" TextWrapping="Wrap" Text="SHA1：" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="287,411,0,0" TextWrapping="Wrap" Text="MD5：" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock3" HorizontalAlignment="Left" Margin="327,103,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock4" HorizontalAlignment="Left" Margin="331,134,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock5" HorizontalAlignment="Left" Margin="345,165,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="288,446,0,0" TextWrapping="Wrap" Text="SHA256：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="288,417,0,0" TextWrapping="Wrap" Text="SHA1：" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,388,0,0" TextWrapping="Wrap" Text="MD5：" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="288,320,0,0" TextWrapping="Wrap" Text="文件路径：" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="287,357,0,0" TextWrapping="Wrap" Text="文件大小：" VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock6" HorizontalAlignment="Left" Margin="347,320,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock7" HorizontalAlignment="Left" Margin="345,357,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock8" HorizontalAlignment="Left" Margin="327,411,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock9" HorizontalAlignment="Left" Margin="331,440,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
-        <TextBlock x:Name="TextBlock10" HorizontalAlignment="Left" Margin="345,469,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock8" HorizontalAlignment="Left" Margin="327,388,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock9" HorizontalAlignment="Left" Margin="331,417,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock10" HorizontalAlignment="Left" Margin="345,446,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="78,108,0,0" TextWrapping="Wrap" Text="请将文件拖到这里" VerticalAlignment="Top" FontSize="18" Foreground="#7F000000"/>
         <TextBlock HorizontalAlignment="Left" Margin="78,390,0,0" TextWrapping="Wrap" Text="请将文件拖到这里" VerticalAlignment="Top" FontSize="18" Foreground="#7F000000"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,539,0,0" TextWrapping="Wrap" Text="文件校验结果" VerticalAlignment="Top" FontSize="20"/>
@@ -44,5 +44,10 @@
         <TextBlock x:Name="TextBlock12" HorizontalAlignment="Center" Margin="0,623,0,0" TextWrapping="Wrap" Text="等待校验..." VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock13" HorizontalAlignment="Center" Margin="0,657,0,0" TextWrapping="Wrap" Text="等待校验..." VerticalAlignment="Top"/>
         <TextBlock x:Name="TextBlock14" HorizontalAlignment="Center" Margin="0,692,0,0" TextWrapping="Wrap" Text="等待校验..." VerticalAlignment="Top"/>
+        <Label Content="SHA512:" HorizontalAlignment="Left" Margin="282,191,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock15" HorizontalAlignment="Left" Margin="345,196,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <Label Content="SHA512:" HorizontalAlignment="Left" Margin="284,475,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock16" HorizontalAlignment="Left" Margin="347,480,0,0" TextWrapping="Wrap" Text="无" VerticalAlignment="Top"/>
+        <TextBlock x:Name="TextBlock17" HorizontalAlignment="Center" Margin="0,728,0,0" TextWrapping="Wrap" Text="等待校验..." VerticalAlignment="Top"/>
     </Grid>
 </Window>
